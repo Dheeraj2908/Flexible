@@ -1,0 +1,101 @@
+<mvc:View
+	controllerName="sap.ui.demo.fiori2.controller.Master"
+	xmlns="sap.m" xmlns:core="sap.ui.core"
+	xmlns:f="sap.f" xmlns:fb="sap.ui.comp.filterbar"
+    xmlns:svm="sap.ui.comp.smartvariants"
+    xmlns:t="sap.ui.table"
+	xmlns:mvc="sap.ui.core.mvc">
+	<f:DynamicPage id="dynamicPageId" toggleHeaderOnTitleClick="false">
+		<!-- DynamicPage Title -->
+		<f:title>
+			<f:DynamicPageTitle>
+				<f:heading>
+					<Title text="Customer Data for Northwind Service"/>
+				</f:heading>
+			</f:DynamicPageTitle>
+		</f:title>
+
+		<!-- DynamicPage Content -->
+		<f:content>
+			<VBox fitContainer="true">
+				<fb:FilterBar id="filterbar" persistencyKey="myPersKey" search=".onSearch" filterChange=".onFilterChange" afterVariantLoad=".onAfterVariantLoad">
+                    <fb:filterItems>
+                        <fb:FilterItem name="CompanyName" label="CompanyName">
+                            <fb:control>
+                                <Input id="get"/>
+                            </fb:control>
+                        </fb:FilterItem>
+                        <fb:FilterItem name="ContactName" label="ContactName">
+                            <fb:control>
+                                <Input id="give" />
+                            </fb:control>
+                        </fb:FilterItem>
+                        <fb:FilterItem name="City" label="City">
+                            <fb:control>
+                                <Input id="fetch"/>
+                            </fb:control>
+                        </fb:FilterItem>
+                        <fb:FilterItem name="Country" label="Country">
+                            <fb:control>
+                                <Input id="call" />
+                            </fb:control>
+                        </fb:FilterItem>
+                    </fb:filterItems>
+                </fb:FilterBar>
+				
+				<Table selectionChange="onSelectItem" mode="SingleSelectMaster" id="tab" items="{/Customers}">
+					<columns>
+						<Column>
+							<Label text="CustomerID" />
+						</Column>
+						<!-- <Column>
+							<Label text="CompanyName" />
+						</Column> -->
+						<Column>
+							<Label text="ContactName" />
+						</Column>
+						<!-- <Column>
+							<Label text="ContactTitle" />
+						</Column> -->
+						<!-- <Column>
+							<Label text="Address" />
+						</Column>
+						<Column>
+							<Label text="City" />
+						</Column>
+						<Column>
+							<Label text="Region" />
+						</Column>
+						<Column>
+							<Label text="PostalCode" />
+						</Column> -->
+						<Column>
+							<Label text="Country" />
+						</Column>
+						<Column>
+							<Label text="Phone" />
+						</Column>
+						<!-- <Column>
+							<Label text="Fax" />
+						</Column> -->
+					</columns>
+					<items>
+						<ColumnListItem>
+							<Text text="{CustomerID}" />
+							<!-- <Text text="{CompanyName}" /> -->
+							<Text text="{ContactName}" />
+							<!-- <Text text="{ContactTitle}" />
+							<Text text="{Address}" />
+							<Text text="{City}" />
+							<Text text="{Region}" />
+							<Text text="{PostalCode}" /> -->
+							<Text text="{Country}" />
+							<Text text="{Phone}" />
+							<!-- <Text text="{Fax}" /> -->
+						</ColumnListItem>
+					</items>
+				</Table>
+			</VBox>
+		</f:content>
+	</f:DynamicPage>
+</mvc:View>
